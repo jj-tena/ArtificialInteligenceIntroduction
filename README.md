@@ -1,7 +1,7 @@
 # ArtificialInteligenceIntroduction
 This repository contains a series of notebooks that aim to serve as an introduction to the field of artificial intelligence development, exploring the necessary steps for building machine learning models in different use cases.
 
-## Notebook 1: “Prediction of Heart Attack”
+## Notebook 1: Prediction of Heart Attack
 
 ### Use Case:
 This notebook addresses the case of a health insurance company aiming to predict whether a client is at risk of a heart attack based solely on the data collected during their initial interview. The objective is to use this data to assess the likelihood of the client experiencing a heart attack, with the target variable being the occurrence of a heart attack.
@@ -81,3 +81,39 @@ The implementation of TimeSeriesSplit cross-validation provides confidence in th
 Linear Regression is an appropriate choice for this problem due to the inherent linear relationships in climatological data.
 The model demonstrated robustness and generalized well to unseen data, as evidenced by the consistently low MAE values across all cross-validation folds.
 
+## Notebook 3: Income Prediction for Adults
+
+### Use Case:
+The dataset used in this analysis is the Adult Income Dataset, which contains demographic and economic data on 48,842 individuals. The goal is to predict whether an individual's income exceeds $50,000 per year based on various features such as age, education, occupation, and hours worked per week.
+
+### Objective:
+The objective of this notebook is to build a machine learning model that predicts whether an individual's income is greater than or less than $50K per year. The prediction is based on categorical and numerical features that describe each person’s demographics, education, and employment characteristics.
+
+### Steps:
+
+#### Dataset Selection & Preprocessing:
+The dataset includes both numerical and categorical variables.
+Handling missing values: Missing values in features such as workclass, occupation, and native-country are treated by different methods depending on the preprocessing approach.
+Encoding categorical variables: Various encoding methods (OneHotEncoding, OrdinalEncoding) are applied to transform categorical features into a usable format for machine learning models.
+Feature scaling: Numerical features like age, hours-per-week, capital-gain, and capital-loss are scaled using methods like StandardScaler and MinMaxScaler.
+Dimensionality reduction: Techniques such as TruncatedSVD and PCA are applied in some preprocessing options to reduce the number of features.
+
+#### Outlier Detection and Data Cleaning:
+Visual and statistical methods (e.g., Isolation Forest) are used to identify outliers in numerical variables. However, these values are not treated as true outliers as they reflect natural patterns in the data.
+
+#### Preprocessing Strategies: Three different preprocessing pipelines are created:
+Option 1: Missing values are replaced by the most frequent value, numerical columns are scaled using StandardScaler, categorical variables are OneHotEncoded, and TruncatedSVD is applied for dimensionality reduction.
+Option 2: Rows with missing values are dropped, numerical columns are scaled using MinMaxScaler, categorical variables are OrdinalEncoded, and PCA is used for dimensionality reduction.
+Option 3: Missing values are replaced with the most frequent value, numerical columns are scaled using MinMaxScaler, categorical variables are OrdinalEncoded, and no dimensionality reduction is applied.
+
+#### Modeling and Evaluation:
+A RandomForestClassifier is used as the predictive model for income classification.
+KFold cross-validation with 5 splits is applied to ensure robust evaluation of the model.
+The F1 score is used as the primary metric for assessing model performance.
+The cross-validation results for each preprocessing option are as follows:
+Option 1: Mean F1 score of 0.5465 with a standard deviation of 0.0123.
+Option 2: Mean F1 score of 0.5557 with a standard deviation of 0.0087.
+Option 3: Mean F1 score of 0.6740 with a standard deviation of 0.0090.
+
+### Conclusion:
+The third preprocessing strategy, which involved replacing missing values, scaling numerical columns using MinMaxScaler, encoding categorical variables using OrdinalEncoder, and not applying any dimensionality reduction, yielded the highest performance. It achieved a mean F1 score of 0.6740. This suggests that dimensionality reduction in this specific case did not improve the model’s performance and might have removed valuable information necessary for accurate income prediction. Therefore, simpler preprocessing without dimensionality reduction may be more effective for this dataset.
