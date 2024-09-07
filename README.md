@@ -117,3 +117,48 @@ Option 3: Mean F1 score of 0.6740 with a standard deviation of 0.0090.
 
 ### Conclusion:
 The third preprocessing strategy, which involved replacing missing values, scaling numerical columns using MinMaxScaler, encoding categorical variables using OrdinalEncoder, and not applying any dimensionality reduction, yielded the highest performance. It achieved a mean F1 score of 0.6740. This suggests that dimensionality reduction in this specific case did not improve the model’s performance and might have removed valuable information necessary for accurate income prediction. Therefore, simpler preprocessing without dimensionality reduction may be more effective for this dataset.
+
+## Notebook 4: Final Project - Hotel Booking Changes Prediction
+
+### Use Case:
+In the hotel industry, efficiently managing reservations is crucial for maximizing occupancy and controlling costs. Frequent changes in bookings—such as adjustments to stay dates, room types, or special requests—can significantly impact room availability and resource allocation, as well as customer experience. This notebook proposes the development of a machine learning model to predict the number of changes a customer will make to their reservation. By anticipating these changes, hotels can strategically allocate rooms and resources, reduce last-minute adjustments, and enhance customer satisfaction, potentially leading to increased occupancy and revenue.
+
+### Objective:
+The objective is to develop a predictive model that forecasts the number of modifications a customer will make to their booking, based on features in the hotel booking dataset. This will help hotels manage reservations more efficiently and improve both operational efficiency and customer satisfaction.
+
+### Steps:
+
+#### Dataset Ingestion:
+Load the hotel booking dataset (hotel_bookings.csv) into a Pandas DataFrame.
+
+#### Preliminary Analysis:
+Conduct exploratory data analysis to understand the dataset and identify missing values and outliers.
+Handle missing values in columns 'country', 'agent', 'company', and 'children' using various strategies such as removal or imputation.
+
+### Data Preparation:
+Missing Values:
+Drop columns or rows with a high percentage of missing values.
+Impute missing values with the most frequent value or median, as appropriate.
+Outliers:
+Identify outliers using the Isolation Forest algorithm and remove them if necessary.
+Data Leakage:
+Remove columns that could lead to data leakage (e.g., 'days_in_waiting_list', 'is_canceled', 'reservation_status_date').
+Feature Engineering:
+Create the target variable total_modifications as the sum of 'total_of_special_requests' and 'booking_changes'.
+Drop the original columns used to construct the target variable.
+Prepare the features for modeling by scaling numerical variables and encoding categorical variables.
+Dimensionality Reduction:
+Apply TruncatedSVD to reduce dimensionality after encoding categorical variables.
+
+#### Model Building and Validation:
+Model Selection:
+Linear Regression and Ridge Regression are used to model the target variable.
+Validation:
+Use K-Fold cross-validation to assess model performance, with RMSE (Root Mean Squared Error) as the evaluation metric.
+Results:
+Both Linear Regression and Ridge Regression models yield similar performance, with an RMSE of approximately 0.82, indicating high predictive accuracy.
+Implementation:
+Outline steps for deploying the model into a production environment, including integration with existing systems and monitoring.
+
+### Conclusion:
+The predictive model for booking changes demonstrates high accuracy with an RMSE of 0.82. This model can help hotels better manage reservation changes, optimize room allocation, and enhance customer experience. Implementing this model into a production environment involves ensuring accurate integration and ongoing maintenance.
