@@ -135,7 +135,7 @@ Load the hotel booking dataset (hotel_bookings.csv) into a Pandas DataFrame.
 Conduct exploratory data analysis to understand the dataset and identify missing values and outliers.
 Handle missing values in columns 'country', 'agent', 'company', and 'children' using various strategies such as removal or imputation.
 
-### Data Preparation:
+#### Data Preparation:
 Missing Values:
 Drop columns or rows with a high percentage of missing values.
 Impute missing values with the most frequent value or median, as appropriate.
